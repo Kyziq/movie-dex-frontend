@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../models/movie.dart';
 // import '../../providers/movie_provider.dart';
@@ -161,16 +161,46 @@ class MovieListScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final movies = ref.watch(movieProvider);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Movies'),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Section(title: 'Today\'s Top Picks for You', movies: movies),
-            Section(title: 'My List', movies: movies),
+    return CupertinoPageScaffold(
+      child: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            const SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 16.0),
+                    child: Text(
+                      'Discover',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: CupertinoColors.white,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: CupertinoSearchTextField(
+                      placeholder: 'Search movies...',
+                    ),
+                  ),
+                  SizedBox(height: 12), // Space under the search bar
+                ],
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Section(
+                title: 'CURRENTLY TRENDING MOVIES',
+                movies: movies,
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Section(
+                title: 'MY MOVIES LIST',
+                movies: movies,
+              ),
+            ),
           ],
         ),
       ),
@@ -186,28 +216,33 @@ class Section extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: Text(
             title,
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          SizedBox(
-            height: 250,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: movies.length,
-              itemBuilder: (context, index) {
-                final movie = movies[index];
-                return MovieCard(movie: movie);
-              },
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: CupertinoColors.white,
             ),
           ),
-        ],
-      ),
+        ),
+        const SizedBox(height: 4.0),
+        SizedBox(
+          height: 250,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: movies.length,
+            itemBuilder: (context, index) {
+              final movie = movies[index];
+              return MovieCard(movie: movie);
+            },
+          ),
+        ),
+      ],
     );
   }
 }

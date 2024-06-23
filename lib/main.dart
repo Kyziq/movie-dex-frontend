@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'screens/home/home_screen.dart';
 
@@ -11,10 +11,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return const CupertinoApp(
       title: 'MovieDex',
       debugShowCheckedModeBanner: false,
-      // TODO: Font family
+      theme: CupertinoThemeData(
+        primaryColor: CupertinoColors.systemBlue,
+      ),
       home: HomeScreen(),
     );
   }

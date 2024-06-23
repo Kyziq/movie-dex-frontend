@@ -10,7 +10,7 @@ class MovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 150, // Adjust the width to fit the horizontal list
-      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+      margin: const EdgeInsets.symmetric(horizontal: 4.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
