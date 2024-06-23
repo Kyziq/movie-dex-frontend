@@ -11,6 +11,9 @@ class Movie with _$Movie {
     required String description,
     required String releaseDate,
     required String genre,
+    required String imageUrl,
+    required DateTime createdAt,
+    required DateTime updatedAt,
   }) = _Movie;
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);

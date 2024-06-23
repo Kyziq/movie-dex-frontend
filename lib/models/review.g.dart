@@ -1,30 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'movie.dart';
+part of 'review.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MovieImpl _$$MovieImplFromJson(Map<String, dynamic> json) => _$MovieImpl(
+_$ReviewImpl _$$ReviewImplFromJson(Map<String, dynamic> json) => _$ReviewImpl(
       id: (json['id'] as num).toInt(),
-      title: json['title'] as String,
-      description: json['description'] as String,
-      releaseDate: json['releaseDate'] as String,
-      genre: json['genre'] as String,
-      imageUrl: json['imageUrl'] as String,
+      userId: (json['userId'] as num).toInt(),
+      movieId: (json['movieId'] as num).toInt(),
+      rating: (json['rating'] as num).toInt(),
+      comment: json['comment'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
 
-Map<String, dynamic> _$$MovieImplToJson(_$MovieImpl instance) =>
+Map<String, dynamic> _$$ReviewImplToJson(_$ReviewImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'title': instance.title,
-      'description': instance.description,
-      'releaseDate': instance.releaseDate,
-      'genre': instance.genre,
-      'imageUrl': instance.imageUrl,
+      'userId': instance.userId,
+      'movieId': instance.movieId,
+      'rating': instance.rating,
+      'comment': instance.comment,
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
     };

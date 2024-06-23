@@ -25,6 +25,9 @@ mixin _$Movie {
   String get description => throw _privateConstructorUsedError;
   String get releaseDate => throw _privateConstructorUsedError;
   String get genre => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +44,10 @@ abstract class $MovieCopyWith<$Res> {
       String title,
       String description,
       String releaseDate,
-      String genre});
+      String genre,
+      String imageUrl,
+      DateTime createdAt,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -62,6 +68,9 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
     Object? description = null,
     Object? releaseDate = null,
     Object? genre = null,
+    Object? imageUrl = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -84,6 +93,18 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
           ? _value.genre
           : genre // ignore: cast_nullable_to_non_nullable
               as String,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -100,7 +121,10 @@ abstract class _$$MovieImplCopyWith<$Res> implements $MovieCopyWith<$Res> {
       String title,
       String description,
       String releaseDate,
-      String genre});
+      String genre,
+      String imageUrl,
+      DateTime createdAt,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -119,6 +143,9 @@ class __$$MovieImplCopyWithImpl<$Res>
     Object? description = null,
     Object? releaseDate = null,
     Object? genre = null,
+    Object? imageUrl = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_$MovieImpl(
       id: null == id
@@ -141,6 +168,18 @@ class __$$MovieImplCopyWithImpl<$Res>
           ? _value.genre
           : genre // ignore: cast_nullable_to_non_nullable
               as String,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -153,7 +192,10 @@ class _$MovieImpl implements _Movie {
       required this.title,
       required this.description,
       required this.releaseDate,
-      required this.genre});
+      required this.genre,
+      required this.imageUrl,
+      required this.createdAt,
+      required this.updatedAt});
 
   factory _$MovieImpl.fromJson(Map<String, dynamic> json) =>
       _$$MovieImplFromJson(json);
@@ -168,10 +210,16 @@ class _$MovieImpl implements _Movie {
   final String releaseDate;
   @override
   final String genre;
+  @override
+  final String imageUrl;
+  @override
+  final DateTime createdAt;
+  @override
+  final DateTime updatedAt;
 
   @override
   String toString() {
-    return 'Movie(id: $id, title: $title, description: $description, releaseDate: $releaseDate, genre: $genre)';
+    return 'Movie(id: $id, title: $title, description: $description, releaseDate: $releaseDate, genre: $genre, imageUrl: $imageUrl, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -185,13 +233,19 @@ class _$MovieImpl implements _Movie {
                 other.description == description) &&
             (identical(other.releaseDate, releaseDate) ||
                 other.releaseDate == releaseDate) &&
-            (identical(other.genre, genre) || other.genre == genre));
+            (identical(other.genre, genre) || other.genre == genre) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, title, description, releaseDate, genre);
+  int get hashCode => Object.hash(runtimeType, id, title, description,
+      releaseDate, genre, imageUrl, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -213,7 +267,10 @@ abstract class _Movie implements Movie {
       required final String title,
       required final String description,
       required final String releaseDate,
-      required final String genre}) = _$MovieImpl;
+      required final String genre,
+      required final String imageUrl,
+      required final DateTime createdAt,
+      required final DateTime updatedAt}) = _$MovieImpl;
 
   factory _Movie.fromJson(Map<String, dynamic> json) = _$MovieImpl.fromJson;
 
@@ -227,6 +284,12 @@ abstract class _Movie implements Movie {
   String get releaseDate;
   @override
   String get genre;
+  @override
+  String get imageUrl;
+  @override
+  DateTime get createdAt;
+  @override
+  DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$MovieImplCopyWith<_$MovieImpl> get copyWith =>
