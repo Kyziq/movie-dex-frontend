@@ -1,5 +1,3 @@
-// lib/widgets/star_rating.dart
-
 import 'package:flutter/cupertino.dart';
 
 class StarRating extends StatefulWidget {
@@ -9,18 +7,18 @@ class StarRating extends StatefulWidget {
   final Color color;
 
   const StarRating({
-    Key? key,
+    super.key,
     this.starCount = 5,
     this.rating = 0.0,
     required this.onRatingChanged,
     this.color = CupertinoColors.systemYellow,
-  }) : super(key: key);
+  });
 
   @override
-  _StarRatingState createState() => _StarRatingState();
+  StarRatingState createState() => StarRatingState();
 }
 
-class _StarRatingState extends State<StarRating> {
+class StarRatingState extends State<StarRating> {
   double _currentRating = 0.0;
 
   @override
