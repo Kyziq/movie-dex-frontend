@@ -23,10 +23,14 @@ mixin _$Movie {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'release_date')
   String get releaseDate => throw _privateConstructorUsedError;
   String get genre => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_url')
   String get imageUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
   DateTime get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,11 +47,11 @@ abstract class $MovieCopyWith<$Res> {
       {int id,
       String title,
       String description,
-      String releaseDate,
+      @JsonKey(name: 'release_date') String releaseDate,
       String genre,
-      String imageUrl,
-      DateTime createdAt,
-      DateTime updatedAt});
+      @JsonKey(name: 'image_url') String imageUrl,
+      @JsonKey(name: 'created_at') DateTime createdAt,
+      @JsonKey(name: 'updated_at') DateTime updatedAt});
 }
 
 /// @nodoc
@@ -120,11 +124,11 @@ abstract class _$$MovieImplCopyWith<$Res> implements $MovieCopyWith<$Res> {
       {int id,
       String title,
       String description,
-      String releaseDate,
+      @JsonKey(name: 'release_date') String releaseDate,
       String genre,
-      String imageUrl,
-      DateTime createdAt,
-      DateTime updatedAt});
+      @JsonKey(name: 'image_url') String imageUrl,
+      @JsonKey(name: 'created_at') DateTime createdAt,
+      @JsonKey(name: 'updated_at') DateTime updatedAt});
 }
 
 /// @nodoc
@@ -191,11 +195,11 @@ class _$MovieImpl implements _Movie {
       {required this.id,
       required this.title,
       required this.description,
-      required this.releaseDate,
+      @JsonKey(name: 'release_date') required this.releaseDate,
       required this.genre,
-      required this.imageUrl,
-      required this.createdAt,
-      required this.updatedAt});
+      @JsonKey(name: 'image_url') required this.imageUrl,
+      @JsonKey(name: 'created_at') required this.createdAt,
+      @JsonKey(name: 'updated_at') required this.updatedAt});
 
   factory _$MovieImpl.fromJson(Map<String, dynamic> json) =>
       _$$MovieImplFromJson(json);
@@ -207,14 +211,18 @@ class _$MovieImpl implements _Movie {
   @override
   final String description;
   @override
+  @JsonKey(name: 'release_date')
   final String releaseDate;
   @override
   final String genre;
   @override
+  @JsonKey(name: 'image_url')
   final String imageUrl;
   @override
+  @JsonKey(name: 'created_at')
   final DateTime createdAt;
   @override
+  @JsonKey(name: 'updated_at')
   final DateTime updatedAt;
 
   @override
@@ -263,14 +271,15 @@ class _$MovieImpl implements _Movie {
 
 abstract class _Movie implements Movie {
   const factory _Movie(
-      {required final int id,
-      required final String title,
-      required final String description,
-      required final String releaseDate,
-      required final String genre,
-      required final String imageUrl,
-      required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$MovieImpl;
+          {required final int id,
+          required final String title,
+          required final String description,
+          @JsonKey(name: 'release_date') required final String releaseDate,
+          required final String genre,
+          @JsonKey(name: 'image_url') required final String imageUrl,
+          @JsonKey(name: 'created_at') required final DateTime createdAt,
+          @JsonKey(name: 'updated_at') required final DateTime updatedAt}) =
+      _$MovieImpl;
 
   factory _Movie.fromJson(Map<String, dynamic> json) = _$MovieImpl.fromJson;
 
@@ -281,14 +290,18 @@ abstract class _Movie implements Movie {
   @override
   String get description;
   @override
+  @JsonKey(name: 'release_date')
   String get releaseDate;
   @override
   String get genre;
   @override
+  @JsonKey(name: 'image_url')
   String get imageUrl;
   @override
+  @JsonKey(name: 'created_at')
   DateTime get createdAt;
   @override
+  @JsonKey(name: 'updated_at')
   DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)

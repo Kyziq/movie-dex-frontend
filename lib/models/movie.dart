@@ -9,11 +9,11 @@ class Movie with _$Movie {
     required int id,
     required String title,
     required String description,
-    required String releaseDate,
+    @JsonKey(name: 'release_date') required String releaseDate,
     required String genre,
-    required String imageUrl,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    @JsonKey(name: 'image_url') required String imageUrl,
+    @JsonKey(name: 'created_at') required DateTime createdAt,
+    @JsonKey(name: 'updated_at') required DateTime updatedAt,
   }) = _Movie;
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
