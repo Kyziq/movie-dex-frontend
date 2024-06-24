@@ -1,9 +1,20 @@
+// lib/main.dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'screens/home/home_screen.dart';
+import 'package:movie_dex_mobile/config/app_config.dart';
+import 'package:movie_dex_mobile/screens/home/home_screen.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MainApp()));
+  runApp(
+    ProviderScope(
+      overrides: [
+        appConfigProvider.overrideWithValue(AppConfig(
+            env: Environment.dev,
+            useMockData: false)), // Change to `false` to use real data
+      ],
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {

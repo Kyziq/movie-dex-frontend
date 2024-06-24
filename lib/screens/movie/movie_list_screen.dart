@@ -1,17 +1,17 @@
+// lib/screens/movie/movie_list_screen.dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_dex_mobile/screens/movie/movie_detail_screen.dart';
 import '../../models/movie.dart';
-// import '../../providers/movie_provider.dart';
 import '../../widgets/movie_card.dart';
-import '../../data/mock_data.dart'; // Updated import
+import '../../providers/movie_provider.dart';
 
 class MovieListScreen extends ConsumerWidget {
   const MovieListScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final movies = ref.watch(movieProvider);
+    final moviesAsyncValue = ref.watch(movieProvider);
 
     return CupertinoPageScaffold(
       child: SafeArea(
@@ -41,17 +41,34 @@ class MovieListScreen extends ConsumerWidget {
                 ],
               ),
             ),
-            SliverToBoxAdapter(
-              child: Section(
-                title: 'CURRENTLY TRENDING MOVIES',
-                movies: movies,
+            moviesAsyncValue.when(
+              data: (movies) {
+                // print('Movies loaded in UI: $movies');
+                return SliverList(
+                  delegate: SliverChildListDelegate([
+                    Section(
+                      title: 'CURRENTLY TRENDING MOVIES',
+                      movies: movies,
+                    ),
+                    Section(
+                      title: 'MY MOVIES LIST',
+                      movies: movies,
+                    ),
+                  ]),
+                );
+              },
+              loading: () => const SliverFillRemaining(
+                child: Center(
+                  child: CupertinoActivityIndicator(),
+                ),
               ),
-            ),
-            SliverToBoxAdapter(
-              child: Section(
-                title: 'MY MOVIES LIST',
-                movies: movies,
-              ),
+              error: (error, stack) {
+                return const SliverFillRemaining(
+                  child: Center(
+                    child: Text('Failed to load movies'),
+                  ),
+                );
+              },
             ),
           ],
         ),
